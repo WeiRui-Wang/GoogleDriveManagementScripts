@@ -1,25 +1,6 @@
 // Constants
 const CONTINUATION_TOKEN = "ContinuationToken";
 const TIME_LIMIT_MS = 4.9 * 60 * 1000; // 4.9 minutes in milliseconds
-const PATTERN = /^My Drive\/your_email_here\.edu\/\D+/;
-
-// Recursively build the folder path of a given folder
-function buildFolderPath(folder) {
-  if (!folder) {
-    return "";
-  }
-
-  let parentFolders = folder.getParents();
-  let parentFolder;
-  let fullPath = "";
-
-  while (parentFolders.hasNext()) {
-    parentFolder = parentFolders.next();
-    fullPath = parentFolder.getName() + "/" + fullPath;
-  }
-
-  return buildFolderPath(parentFolder) + fullPath;
-}
 
 // Restore trashed files based on the specified pattern and log their original directories
 function restoreFilteredTrashedFiles() {
@@ -35,30 +16,16 @@ function restoreFilteredTrashedFiles() {
   // Set a time limit to avoid exceeding maximum execution time
   let startTime = new Date().getTime();
 
-  // Iterate through trashed files and restore those that match the pattern
+  // Iterate through trashed files and restore PDF files
   while (trashedFiles.hasNext()) {
     try {
       let file = trashedFiles.next();
-      let parentFolders = file.getParents();
 
       if (file.getMimeType() == "application/pdf") {
         file.setTrashed(false);
         Logger.log("Restored PDF file: " + file.getName());
-        continue;
-      }
-
-      while (parentFolders.hasNext()) {
-        let parentFolder = parentFolders.next();
-        let filePath = buildFolderPath(parentFolder) + file.getName();
-
-        // Check if the file path matches the pattern and the file is not a PDF
-        if (file.getMimeType() == "application/pdf" || PATTERN.test(filePath)) {
-          // Restore the file and log the restored file path
-          file.setTrashed(false);
-          Logger.log("Restored file with matching pattern: " + filePath);
-        } else {
-          Logger.log("Skipped file (pattern not matched): " + filePath);
-        }
+      } else {
+        Logger.log("Skipped file (not a PDF): " + file.getName());
       }
     } catch (error) {
       Logger.log("Error (" + error.name + "): " + error.message);
@@ -81,5 +48,5 @@ function restoreFilteredTrashedFiles() {
   Logger.log("All trashed files processed. Continuation token cleared.");
 
   // Log that the process is complete
-  Logger.log("Restored trashed files from filtered directories.");
+  Logger.log("Restored trashed PDF files.");
 }
