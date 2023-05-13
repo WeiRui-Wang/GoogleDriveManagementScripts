@@ -43,17 +43,9 @@ ManageDriveDuplicates is a Google Apps Script for identifying and managing dupli
 
 ### Usage
 
-#### Setup
-
-- First, create a Google Sheet to store file signatures and note its ID from the URL. Define a regular expression pattern to specify the file paths you wish to check. Then, create a new Google Apps Script project and copy the ManageDriveDuplicates.gs script into it.
-
-#### Execution
-
-- Once the setup is done, run the manageDuplicateFilesInDrive function to start the process of identifying and managing duplicate files.
-
-#### API Scopes
-
-- Ensure that your project's API scopes include Google Drive and Google Sheets.
+1. Setup: First, create a Google Sheet to store file signatures and note its ID from the URL. Define a regular expression pattern to specify the file paths you wish to check. Then, create a new Google Apps Script project and copy the ManageDriveDuplicates.gs script into it.
+2. Execution: Once the setup is done, run the manageDuplicateFilesInDrive function to start the process of identifying and managing duplicate files.
+3. API Scopes: Ensure that your project's API scopes include Google Drive and Google Sheets.
 
 ### Customization
 
