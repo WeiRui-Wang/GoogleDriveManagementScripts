@@ -1,5 +1,4 @@
-// Constants
-const CONTINUATION_TOKEN = "ContinuationToken";
+const CONTINUATION_TOKEN = "CONTINUATION_TOKEN";
 const TIME_LIMIT_MS = 4.9 * 60 * 1000; // 4.9 minutes in milliseconds
 
 // Restore trashed files based on the specified pattern and log their original directories

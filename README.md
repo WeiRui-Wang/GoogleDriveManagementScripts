@@ -58,3 +58,36 @@ The `ManageDriveDuplicates.gs` script includes several functions that you can cu
 - `getFilePath`: This function returns the full file path of a file.
 - `getDuplicateFile`: This function retrieves the duplicate file object using the file ID.
 - `trashAppropriateFile`: This function determines which file to trash based on their last updated dates and file paths.
+
+## [Google Apps Script - Delete Empty Folders](DeleteEmptyFolders.gs)
+
+This Google Apps Script is designed to traverse all folders within your Google Drive and delete those which are empty, i.e., they contain neither files nor sub-folders. The script handles Google Apps Script's 6-minute execution time limit by using continuation tokens. This allows it to pick up where it left off in the event that the script times out.
+
+### Features
+
+- Traverse all folders: The script iteratively goes through all folders present in your Google Drive.
+- Delete empty folders: The script identifies empty folders, which are folders containing neither files nor sub-folders, and deletes them.
+- Continuation tokens: To handle Google Apps Script's 6-minute execution time limit, the script uses continuation tokens to save progress and resume where it left off when re-run.
+- Verbose logging: The script provides detailed logs, including which folders have been deleted and when continuation tokens have been saved.
+
+### Usage
+
+1. Setup:
+
+- Navigate to Google Apps Script by typing `script.google.com` into your browser's address bar.
+- Click on `New Project`.
+- Delete any code in the editor and replace it with the code from `DeleteEmptyFolders.gs`.
+- Save the project with an appropriate name, such as `Delete Empty Folders`.
+
+2. Running the Script:
+
+- Run the deleteEmptyFolders function by clicking on the play button. If this is the first time you're running the script, Google will ask for permissions to access your Google Drive.
+
+3. Checking Logs:
+
+- View the logs by clicking `View > Logs` in the menu. Here, you can see information about the folders that were deleted and any continuation tokens that were saved due to the script's timeout.
+
+### Customization
+
+- Maximum execution time: The maximum execution time before the script saves a continuation token and stops is currently set to 294000 ms (4.9 minutes). You can adjust this value by changing the `MAX_EXECUTION_TIME_MS` constant at the top of the script.
+- Log messages: The script includes several log messages to inform you about its progress. You can customize these messages by changing the corresponding constants at the top of the script.
