@@ -49,12 +49,12 @@ ManageDriveDuplicates is a Google Apps Script for identifying and managing dupli
 
 ### Customization
 
-The ManageDriveDuplicates.gs script includes several functions that you can customize according to your needs:
+The `ManageDriveDuplicates.gs` script includes several functions that you can customize according to your needs:
 
-- manageDuplicateFilesInDrive: This is the main function which manages the duplicate files in your Google Drive.
-- getFileSignaturesFromSheet: This function retrieves file signatures from the specified Google Sheet.
-- saveFileSignaturesToSheet: This function saves the current file signatures to the Google Sheet.
-- normalizeFileName: This function normalizes a filename by removing the 'Copy of' prefix and any numbers in parentheses.
-- getFilePath: This function returns the full file path of a file.
-- getDuplicateFile: This function retrieves the duplicate file object using the file ID.
-- trashAppropriateFile: This function determines which file to trash based on their last updated dates and file paths.
+- `manageDuplicateFilesInDrive`: This is the main function which manages the duplicate files in your Google Drive.
+- `getFileSignaturesFromSheet`: This function retrieves file signatures from the specified Google Sheet.
+- `saveFileSignaturesToSheet`: This function saves the current file signatures to the Google Sheet.
+- `normalizeFileName`: This function normalizes a filename by removing the 'Copy of' prefix and any numbers in parentheses.
+- `getFilePath`: This function returns the full file path of a file.
+- `getDuplicateFile`: This function retrieves the duplicate file object using the file ID.
+- `trashAppropriateFile`: This function determines which file to trash based on their last updated dates and file paths.
